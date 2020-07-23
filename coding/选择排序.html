@@ -1,0 +1,39 @@
+<!--
+ * @Description: 
+ * @Version: 1.0.0
+ * @Autor: xiaomeng
+ * @Date: 2020-06-01 10:05:55
+ * @LastEditors: xiaomeng
+ * @LastEditTime: 2020-06-01 10:37:14
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function selectSort(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[j] < arr[minIndex]) {
+            minIndex = j;
+          }
+        }
+        if (minIndex !== i){
+          let temp = arr[i];
+          arr[i] = arr[minIndex];
+          arr[minIndex] = temp;
+        }
+      }
+    }
+    let arr = [1, 4, 5, 2, 8, 6, 0]
+    selectSort(arr)
+    console.log(arr);
+    
+  </script>
+</body>
+</html>

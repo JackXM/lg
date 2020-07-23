@@ -1,0 +1,61 @@
+<!--
+ * @Description: 
+ * @Version: 1.0.0
+ * @Autor: xiaomeng
+ * @Date: 2020-06-01 23:05:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-03 18:35:50
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*     PriporityQueue
+    元素属性：
+    pripority
+    方法：
+    add
+    out */
+    class PriporityQueue {
+      constructor() {
+        this.queue = []
+      }
+
+      add = (item) => {
+        if (this.queue.length === 0) {
+          this.queue.push(item)
+        } else {
+          let flag = false; // 判断是否插队
+          for (let i = 0; i < this.queue.length; i++) {
+            const element = this.queue[i];
+            if (element.pripority <= item.pripority) {
+              this.queue.splice(i, 0, item)
+              flag = true;
+              break;
+            }
+          }
+          if (!flag) { // 优先级最低, 放在最后
+            this.queue.push(item);
+          }
+        }
+        this.queue.push(item)
+      };
+      out = () => {
+        return this.queue.shift()
+      }
+    }
+    var queue = new PriporityQueue()
+    queue.add(4)
+    console.log(queue);
+
+  </script>
+</body>
+
+</html>

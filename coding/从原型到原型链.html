@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person() {
+      this.age = 12
+    }
+    Person.prototype.name = "xiaoxiao"
+
+    let person = new Person();
+    let person1 = new Person();
+
+    person.name = 'hhahaha';
+    console.log(person);
+    // console.log(Function.prototype === Function.__proto__); //true
+
+    // console.log(Person.prototype, Object.prototype.isPrototypeOf(person), Object.getPrototypeOf(person), person);
+
+  </script>
+</body>
+
+</html>

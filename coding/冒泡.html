@@ -1,0 +1,38 @@
+<!--
+ * @Description: 
+ * @Version: 1.0.0
+ * @Autor: xiaomeng
+ * @Date: 2020-06-01 10:05:55
+ * @LastEditors: xiaomeng
+ * @LastEditTime: 2020-06-01 10:22:07
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function bubbleSort(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        let flag = false // 优化次数 如果没有出现要排序的 就结束
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            flag = true
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+        if (!flag) break;
+      }
+    }
+    let arr = [1, 4, 5, 2, 8, 6, 0]
+    bubbleSort(arr)
+    console.log(arr);
+    
+  </script>
+</body>
+</html>

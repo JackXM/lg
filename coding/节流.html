@@ -1,0 +1,52 @@
+<!--
+ * @Description: 
+ * @Version: 1.0.0
+ * @Autor: xiaomeng
+ * @Date: 2020-05-30 02:48:59
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-03 12:07:36
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流</title>
+</head>
+
+<body>
+  <script>
+    //-------------------------方案 1------------------------
+    // function throttle(func, delay = 500) {
+    //   let timer = null;
+    //   return function () {
+    //     let context = this
+    //     if (!timer) {
+    //       timer = setTimeout(() => {
+    //         func.apply(context, arguments)
+    //         timer = null
+    //       }, delay)
+    //     }
+    //   }
+    // }
+    //-------------------------方案 2------------------------
+    function throttle(func, delay = 500) {
+      let activeTime = 0;
+      return function () {
+        let context = this;
+        let current = Date.now();
+        if (current - activeTime > delay) {
+          func.apply(context, arguments)
+          activeTime = Date.now();
+        }
+      }
+    }
+
+    document.addEventListener('click', throttle(() => {
+      console.log(1)
+    }, 500))
+  </script>
+</body>
+
+</html>

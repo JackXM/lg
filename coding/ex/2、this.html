@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 1、全局中this指向window
+        // console.log(this);//window
+        // function fn(){
+        //     console.log(this);//window
+        // }
+
+
+        // fn();
+
+
+        // 2、回调函数中this被重定向到window（事件函数除外）
+
+        // function fn1(fn){
+        //     fn();
+        // }
+
+        // function fn2(){
+        //     console.log(this);
+        // }
+
+
+        // fn1(fn2);
+
+        // var obj={
+        //     fn1:function(fn){
+        //         fn();
+        //     },
+        //     fn2:function(){
+        //         console.log(this);
+        //     }
+        // }
+
+        // // obj.fn2();//obj
+        // obj.fn1(obj.fn2);
+
+
+        // var obj = {
+        //     a: function () {
+        //         console.log(this);//obj
+        //         // var arr = [2, 3, 4, 5];
+        //         // arr.reduce(function () {
+        //         //     console.log(this);//window
+        //         // })
+
+        //         // setTimeout(function(){
+        //         //     console.log(this);//window
+        //         // },200);
+        //         // setInterval(function(){
+        //         //     console.log(this);//window
+        //         // },200)
+        //     }
+        // }
+
+        // 3、事件函数中的this----》事件侦听的对象
+
+        // document.addEventListener("click",clickHandker);
+        // function clickHandker(e){
+        //     console.log(this===e.currentTarget);//this被重新指向为被侦听的对象，就是执行addEventListener方法的对象
+        //     // e.currentTarget  事件侦听的对象,默认this和e.currentTarget完全相同
+        //     // e.target   事件触发的目标对象   e.srcElement
+        // }
+
+
+        // var obj={
+        //     a:function(){
+        //         document.addEventListener("click",this.clickHandler);
+        //     },
+        //     clickHandker(e){
+        //         console.log(this);//this不是obj了，变成document
+        //     }
+        // }
+
+
+
+        // 4、对象中this
+        // 1、方法中的this就是当前执行的对象，谁调用该方法，this就是谁
+        // 2、属性中的this就是当前对象外的this指向。
+        // var a=10;
+        // var obj={
+        //     a:1,
+        //     b:function(){
+        //         console.log(this);//this===obj
+        //         // 实现针对自身对象的a递加，就必须要写成this
+        //         // obj.a++;//错误
+        //         this.a++;
+        //         console.log(obj.a);
+        //     },
+        //     // 创建c时，obj还没有创建成功，因此this指向外部的this
+        //     c:this.a
+        // }
+        // // var obj1=obj;
+        // // obj={};
+
+        // // obj1.b();
+
+
+        // console.log(obj);
+        // obj.b();
+
+
+        // 5、类实例化this指向
+
+
+            // 1、ES5
+
+            // function Box(){
+
+            // }
+            // // 实例化方法，原型方法
+            // Box.prototype.a=function(){
+            //     console.log(this);//谁执行这个方法，this就是谁，一般来说这个方法必然被实例化对象执行
+            //     // 这里的this就是实例化的对象
+            // }
+            // // 静态方法，直接针对构造函数定义的方法
+            // Box.b=function(){
+            //     console.log(this);//Box
+            //     // 函数也是对象
+            // }
+
+
+
+            // var b=new Box();
+            // b.a();
+
+            // Box.b();
+
+            // 2\ES6
+
+            // class Box{
+            //     constructor(){
+                    
+            //     }
+            //     a(){
+            //         console.log(this);
+            //     }
+            //     static b(){
+            //         // 禁止在静态方法中调用this
+            //         // console.log(this);
+            //         // Box
+            //     }
+            // }
+
+            // var b=new Box();
+            // b.a();
+
+            // Box.b();
+
+
+            // 6、call、apply，bind   this---》带入的对象
+
+            // function fn(_a){
+            //     this.a=_a;
+            // }
+
+            // var obj={};
+            // fn.call(obj,5);
+            // fn.apply(obj,[5]);
+            // fn.bind(obj)(5);
+
+
+
+            // 7、箭头函数中的this
+
+                // 箭头函数中this将会重新指向到箭头函数外的this
+            // var obj={
+            //     a:function(){
+            //         var arr=[1,2,3];
+            //         // arr.forEach(function(){
+            //         //     console.log(this);
+            //         // })
+            //         arr.forEach(item=>{
+            //             console.log(this);//当前箭头函数外this的指向
+            //         })
+            //     }
+            // }
+
+
+            class Box{
+                bool=false;
+                constructor(){
+                    this.elem=this.createElem();
+                }
+                createElem(){
+                    let div=document.createElement("div");
+                    // Object.assign(div.style,{
+                    //     width:"50px",
+                    //     height:"50px",
+                    //     backgroundColor:"red"
+                    // })
+                    // var obj={
+                    //     width:"50px",
+                    //     height:"50px",
+                    //     backgroundColor:"red"
+                    // }
+                    // for(var prop in obj){
+                    //     div.style[prop]=obj[prop];
+                    // }
+                    div.style.width="50px";
+                    div.style.height="50px";
+                    div.style.backgroundColor="red";
+                    div.addEventListener("click",e=>{
+                        this.clickHandler(e);
+                    });
+                    return div;
+                }
+                appendTo(parent){
+                    parent.appendChild(this.elem);
+                }
+                clickHandler(e){
+                    // this  //this-->div
+                    // console.log(this);
+                    this.bool=!this.bool;//取上次的反值
+                    e.currentTarget.style.backgroundColor=this.bool ? "blue" : "red";
+                }
+            }
+
+            for(var i=0;i<10;i++){
+                var b=new Box();
+            b.appendTo(document.body);
+            }
+    </script>
+</body>
+
+</html>

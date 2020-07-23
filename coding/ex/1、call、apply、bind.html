@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // var s=10;
+        // console.log(window.s);
+
+
+        // var status=10;
+        // console.log(status+10)
+        // console.log(this.status);
+
+        function fn(_a,_b){
+            // 直接执行函数时，函数中this是指向window  ES5
+            // 在ES5中所有全局变量都是window的属性
+            console.log(this);
+            this.a=_a;
+            this.b=_b;
+        }
+
+        // fn(5);
+        // console.log(a);
+
+        // fn.call();//fn();
+        // fn.call(null,5);//fn(5);
+    //    call(只能填写引用类型的对象)
+    //    var obj={};
+    //    fn.call(obj,5,6);
+    //    console.log(obj);
+        // console.log(JSON.stringify(obj));
+        // 使用apply，参数填入时只能写在数组中，call参数是一个个写
+        // fn.apply(obj,[5,6])
+
+        // var arr=[1,2,3,4,5];
+        // 函数执行时大量参数输入时，以数组填入
+    //   var max=Math.max.apply(null,arr);
+
+
+    //   var Maths={
+    //       max:function(){
+    //         // console.log(arguments);
+    //         if(arguments.length===0) return;
+    //         var max=arguments[0];
+    //         for(var i=1;i<arguments.length;i++){
+    //             max=max>arguments[i] ? max : arguments[i];
+    //         }
+    //         return max;
+    //       }
+    //   }
+
+    //   console.log(Maths.max(3,6,2,5,8));
+
+    //   console.log(Maths.max.apply(null,arr));
+
+
+
+        // var arr=[1,2,3,4];
+
+
+
+        var divs=document.getElementsByTagName("div");
+    //    var arr=Array.prototype.slice.call(divs);
+    //    var arr=[].slice.call(divs);
+            // console.log(arr);
+
+            // function Box(){
+
+            // }
+            // Box.prototype.a=function(){
+            //     console.log(this);
+            // }
+
+            // var b=new Box();
+            // b.a();
+
+
+            // var  arr=new Array(5,6,7,8);
+
+            // Array.prototype.slice1=function(start,end){
+            //     // console.log(this);
+            //     if(start===undefined) start=0;
+            //     if(end===undefined) end=this.length;
+            //     if(start<0) start=this.length+start;
+            //     if(end<0) end=this.length+end;
+            //     var arr=[];
+            //     for(var i=start;i<end;i++){
+            //         arr.push(this[i]);
+            //     }
+            //     return arr;
+            // }
+
+        //     var arr=[1,3,4,5,6,7,8,9];
+        //    var arr1=arr.slice1(-4,-2);
+        //    console.log(arr1);
+        // 替代函数中this
+        // var arr=Array.prototype.slice1.call(divs);
+        // console.log(arr);
+
+        // var obj={};
+        // fn.bind(obj)(3,5);
+
+
+
+
+
+        // var  obj={
+        //     num:5,
+        //     a:function(){
+        //         // 第二个参数必须是一个回调函数，不能是函数执行的结果
+        //         document.addEventListener("click",this.clickHandler.bind(this));
+        //         console.log(this.num);
+        //     },
+        //     clickHandler:function(e){
+        //         // this指向侦听的对象，谁调用了addEventListener，this就是谁
+        //         console.log(this.num,e.currentTarget);
+        //     }
+        // }
+
+        // obj.a();
+
+
+
+        // var obj1={
+        //     num:5,
+        //     a:function(){
+        //         var arr=[1,2,3,4,5];
+        
+        //         arr.forEach((function(item){
+        //             // 在任何的回调函数中this将会被重新执行到window
+        //             console.log(this.num,item);
+        //         }).bind(this));
+        //     }
+        // }
+        // obj1.a();
+
+
+        // function fn(){
+
+        // }
+        // var fn=function(){
+
+        // }
+
+        // var fn=new Function();
+
+
+        // Function.prototype.bind1=function(o){
+        //     var fn=this;
+        //     // this是外面的fn1函数，调用bind1的函数
+        //     return function(){
+        //         // 因为这个函数是返回出去被执行的，因此这个函数就是回调函数，this被重新指向window
+        //         // console.log(this);
+        //         // 将参数变为数组
+        //         var arr=Array.prototype.slice.call(arguments);
+        //         fn.apply(o,arr)
+        //     }
+        // }
+
+        // var obj={};
+    //   var fn1= fn.bind(obj)
+    //     console.log(fn1);
+    //  fn.bind1(obj)(3,5)
+        // console.log(obj)
+
+
+    //     function fn1(_a){
+    //         this.a=_a;
+    //     }
+    //    var f=fn1.bind1(obj);
+    // f(5);
+    // console.log(obj);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现字符串的padStart方法</title>
+</head>
+
+<body>
+  <script>
+    String.prototype._padStart = function (targetLen, padString = "") {
+      let originStr = String(this)
+      if (!targetLen) {
+        return originStr
+      }
+      let originLen = originStr.length
+      if (originLen >= targetLen) return originStr
+      let diffNum = targetLen - originLen
+      for (let i = 0; i < diffNum.length; i++) {
+        for (let j = 0; j < padString.length; j++) {
+          if (originLen === targetLen) break;
+          originStr = `${padString[j]}${originStr}`
+        }
+        if (originLen === targetLen) break;
+      }
+      return originStr
+    }
+
+    console.log('2020-06-07'._padStart(10, 'YYYY-MM-DD'));
+
+
+  </script>
+</body>
+
+</html>

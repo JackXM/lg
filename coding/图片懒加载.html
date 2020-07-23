@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片懒加载</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img alt="1" data-src="http://img4.imgtn.bdimg.com/it/u=1878067600,3935137756&fm=200&gp=0.jpg">
+    <img alt="1" data-src="http://img2.imgtn.bdimg.com/it/u=3844233833,3942617167&fm=200&gp=0.jpg">
+    <img alt="1" data-src="http://img2.imgtn.bdimg.com/it/u=1088428253,1150170159&fm=200&gp=0.jpg">
+    <img alt="1" data-src="https://imagecdn.gaopinimages.com/133208523423.jpg?x-image-process=style/H650_WN_MC">
+    <img alt="1"
+      data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591180274664&di=79c2b8601ca9e10adadad82ac7818b06&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180830%2F22%2F1535637760-vIGAXhalRH.jpg">
+    <img alt="1"
+      data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591180284425&di=3f82a17c1d8d0b80c144084ee231da2f&imgtype=0&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2480660138%2C1201402878%26fm%3D214%26gp%3D0.jpg">
+    <img alt="1"
+      data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591180274661&di=8245f14256cedbfbdfc1879bc83ec050&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181007%2F16%2F1538902328-aSbPWXFQNh.jpg">
+    <img alt="1"
+      data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591180274661&di=ac227b6d5988699dfc43248f5ac10ee1&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20190530%2F11%2F1559186561-CrujemOyHp.jpg">
+    <img alt="1"
+      data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591180274660&di=a6f69fc480cb9cf38969885e05377852&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2Fqk%2Fback_origin_pic%2F00%2F01%2F90%2F7b96b74a0a2b615089859de45551ecc0.jpg">
+  </div>
+
+  <script>
+    var imgs = document.querySelectorAll('img');
+
+    function throttle(func, time = 200) {
+      let activeTime = 0;
+      return () => {
+        let current = Date.now();
+        if (current - activeTime > time) {
+          func.apply(this, arguments)
+          activeTime = Date.now();
+        }
+      }
+    }
+
+    function lazyLoad() {
+      let clientHeight = window.innerHeight; //视口高度
+      Array.from(imgs).forEach((item, index) => {
+        let top = item.getBoundingClientRect().top;
+        if (top <= clientHeight && !item.src) {
+          item.src = item.dataset.src;
+        }
+      })
+    }
+
+    // lazyLoad();
+    // document.addEventListener("scroll", () => {
+    //   lazyLoad()
+    // })
+
+    window.onload = window.onscroll = throttle(() => {
+      lazyLoad()
+    })
+
+
+  </script>
+</body>
+
+</html>
