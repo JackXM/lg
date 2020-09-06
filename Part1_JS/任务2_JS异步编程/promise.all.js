@@ -24,6 +24,20 @@ const urlArr = [
  * ES2020 即将要发布的方法
  * 2. 也可以使用 Promise.allSettled() 实现
  */
-const promise = Promise.allSettled(urlArr.map(item => axios(item)))
+// const promise = Promise.allSettled(urlArr.map(item => axios(item)))
 
-promise.then(res => console.log(res))
+// promise.then(res => console.log(res))
+
+
+// Generator 语法糖：async await
+
+var foo = 100
+async function main() {
+  // 注意同一行代码也有同步异步
+  // foo = await Promise.resolve(10) + foo // 111
+  foo = foo + await Promise.resolve(10) // 110
+  console.log('main', foo);
+}
+main()
+foo++
+console.log('global', foo);

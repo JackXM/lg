@@ -14,7 +14,7 @@ setTimeout(() => console.log('H'), 0)
 setTimeout(() => console.log('I'), 1000)
 
 // promise 微任务: 本轮任务的末尾
-// 我的判断: 先执行完宏任务,然后微任务依序插队进去
+// 我的判断: 先按照宏任务排序,然后微任务依序插队进去
 // E F G A  H C  B  I D 
 
 // E
