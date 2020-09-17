@@ -16,8 +16,11 @@
   },
   "homepage": "https://github.com/JackXM/lg#readme",
   "keywords": [],
-  "description": "",
   "dependencies": {
     "axios": "^0.20.0"
-  }
+  },
+  "devDependencies": {
+    "snowpack": "^2.10.3"
+  },
+  "description": ""
 }
