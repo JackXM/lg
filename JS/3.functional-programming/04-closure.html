@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>closure</title>
+</head>
+<body>
+  <script>
+    // 基本工资，绩效工资
+    // getSalary(12000, 2000)
+    // getSalary(15000, 3000)
+    // getSalary(15000, 4000)
+
+    // 为不同级别的员工生成一个计算总工资的函数
+    function makeSalary (base) {
+      return function (perfomance) {
+        return base + perfomance
+      }
+    }
+
+    let salaryLevel1 = makeSalary(12000) //
+    let salaryLevel2 = makeSalary(15000)
+
+    console.log(salaryLevel1(2000));
+    console.log(salaryLevel2(3000));
+  </script>
+</body>
+</html>
