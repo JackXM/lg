@@ -43,8 +43,8 @@
         //     }
         // }
 
-        // // obj.fn2();//obj
-        // obj.fn1(obj.fn2);
+        // obj.fn2();//obj
+        // obj.fn1(obj.fn2); // window
 
 
         // var obj = {
@@ -63,6 +63,7 @@
         //         // },200)
         //     }
         // }
+        // obj.a()
 
         // 3、事件函数中的this----》事件侦听的对象
 
@@ -76,43 +77,44 @@
 
         // var obj={
         //     a:function(){
+        //         // this指向obj
         //         document.addEventListener("click",this.clickHandler);
         //     },
         //     clickHandker(e){
         //         console.log(this);//this不是obj了，变成document
         //     }
         // }
+        // obj.a()
 
 
 
         // 4、对象中this
-        // 1、方法中的this就是当前执行的对象，谁调用该方法，this就是谁
-        // 2、属性中的this就是当前对象外的this指向。
+        // 4.1、方法中的this就是当前执行的对象，谁调用该方法，this就是谁
+        // 4.2、属性中的this就是当前对象外的this指向。
         // var a=10;
         // var obj={
         //     a:1,
         //     b:function(){
         //         console.log(this);//this===obj
         //         // 实现针对自身对象的a递加，就必须要写成this
-        //         // obj.a++;//错误
-        //         this.a++;
+        //         obj.a++; //错误
+        //         // this.a++;
         //         console.log(obj.a);
         //     },
         //     // 创建c时，obj还没有创建成功，因此this指向外部的this
         //     c:this.a
         // }
-        // // var obj1=obj;
-        // // obj={};
-
-        // // obj1.b();
-
+        // // TODO:
+        // var obj1=obj;
+        // obj={};
+        // obj1.b();
 
         // console.log(obj);
         // obj.b();
 
 
-        // 5、类实例化this指向
 
+        // 5、类实例化this指向
 
             // 1、ES5
 
@@ -130,12 +132,11 @@
             //     // 函数也是对象
             // }
 
-
-
             // var b=new Box();
             // b.a();
 
             // Box.b();
+
 
             // 2\ES6
 
@@ -159,6 +160,7 @@
             // Box.b();
 
 
+
             // 6、call、apply，bind   this---》带入的对象
 
             // function fn(_a){
@@ -169,23 +171,25 @@
             // fn.call(obj,5);
             // fn.apply(obj,[5]);
             // fn.bind(obj)(5);
+            // console.log(obj)
 
 
 
             // 7、箭头函数中的this
 
-                // 箭头函数中this将会重新指向到箭头函数外的this
+                // **箭头函数中this将会重新指向到箭头函数外的this**
             // var obj={
             //     a:function(){
             //         var arr=[1,2,3];
             //         // arr.forEach(function(){
-            //         //     console.log(this);
+            //         //     console.log(this); // forEach中callback -》指向window
             //         // })
             //         arr.forEach(item=>{
             //             console.log(this);//当前箭头函数外this的指向
             //         })
             //     }
             // }
+            // obj.a()
 
 
             class Box{

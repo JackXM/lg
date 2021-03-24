@@ -14,11 +14,11 @@ function once(fn) {
 }
 
 // 测试
-// let pay = once(function (money) {
-//   console.log(`支付：¥${money}`);
-// })
-// pay(5)
-// pay(5)
+let pay = once(function (money) {
+  console.log(`支付：¥${money}`);
+});
+pay(5);
+pay(5);
 
 // map
 const map = (array, fn) => {

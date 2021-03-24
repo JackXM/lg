@@ -25,7 +25,7 @@
         function fn(_a,_b){
             // 直接执行函数时，函数中this是指向window  ES5
             // 在ES5中所有全局变量都是window的属性
-            console.log(this);
+            console.log(this,1);
             this.a=_a;
             this.b=_b;
         }
@@ -48,6 +48,7 @@
     //   var max=Math.max.apply(null,arr);
 
 
+// Math是一个内置对象；
     //   var Maths={
     //       max:function(){
     //         // console.log(arguments);
@@ -71,6 +72,7 @@
 
 
         var divs=document.getElementsByTagName("div");
+        // 伪数组变为真数组
     //    var arr=Array.prototype.slice.call(divs);
     //    var arr=[].slice.call(divs);
             // console.log(arr);
@@ -131,14 +133,13 @@
         // obj.a();
 
 
-
         // var obj1={
         //     num:5,
         //     a:function(){
         //         var arr=[1,2,3,4,5];
-        
         //         arr.forEach((function(item){
         //             // 在任何的回调函数中this将会被重新执行到window
+        //             console.log(this,1)
         //             console.log(this.num,item);
         //         }).bind(this));
         //     }
