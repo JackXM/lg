@@ -2,13 +2,13 @@
  * 闭包解决var变量的问题
  */
 
-// for (var index = 0; index < 5; index++) {
-//   (function timer1(i) {
-//     setTimeout(() => {
-//       console.log(i);
-//     }, i * 1000);
-//   })(index);
-// }
+for (var index = 0; index < 5; index++) {
+  (function timer1(i) {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  })(index);
+}
 
 /**
  * 用闭包实现once

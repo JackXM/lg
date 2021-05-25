@@ -17,6 +17,7 @@ const people = [
 //   }, {});
 // }
 
+
 // 用forEach实现groupBy
 function groupBy(arr, property) {
   const resp = {};

@@ -16,8 +16,6 @@
         // function fn(){
         //     console.log(this);//window
         // }
-
-
         // fn();
 
 
@@ -26,12 +24,9 @@
         // function fn1(fn){
         //     fn();
         // }
-
         // function fn2(){
         //     console.log(this);
         // }
-
-
         // fn1(fn2);
 
         // var obj={
@@ -42,7 +37,6 @@
         //         console.log(this);
         //     }
         // }
-
         // obj.fn2();//obj
         // obj.fn1(obj.fn2); // window
 
@@ -104,12 +98,11 @@
         //     // 创建c时，obj还没有创建成功，因此this指向外部的this
         //     c:this.a
         // }
-        // // TODO:
         // var obj1=obj;
         // obj={};
         // obj1.b();
 
-        // console.log(obj);
+        // console.log(obj1.c, 1);
         // obj.b();
 
 
@@ -149,7 +142,7 @@
             //     }
             //     static b(){
             //         // 禁止在静态方法中调用this
-            //         // console.log(this);
+            //         console.log(this);
             //         // Box
             //     }
             // }
@@ -181,9 +174,9 @@
             // var obj={
             //     a:function(){
             //         var arr=[1,2,3];
-            //         // arr.forEach(function(){
-            //         //     console.log(this); // forEach中callback -》指向window
-            //         // })
+            //         arr.forEach(function(){
+            //             console.log(this); // forEach中callback -》指向window
+            //         })
             //         arr.forEach(item=>{
             //             console.log(this);//当前箭头函数外this的指向
             //         })
@@ -192,49 +185,49 @@
             // obj.a()
 
 
-            class Box{
-                bool=false;
-                constructor(){
-                    this.elem=this.createElem();
-                }
-                createElem(){
-                    let div=document.createElement("div");
-                    // Object.assign(div.style,{
-                    //     width:"50px",
-                    //     height:"50px",
-                    //     backgroundColor:"red"
-                    // })
-                    // var obj={
-                    //     width:"50px",
-                    //     height:"50px",
-                    //     backgroundColor:"red"
-                    // }
-                    // for(var prop in obj){
-                    //     div.style[prop]=obj[prop];
-                    // }
-                    div.style.width="50px";
-                    div.style.height="50px";
-                    div.style.backgroundColor="red";
-                    div.addEventListener("click",e=>{
-                        this.clickHandler(e);
-                    });
-                    return div;
-                }
-                appendTo(parent){
-                    parent.appendChild(this.elem);
-                }
-                clickHandler(e){
-                    // this  //this-->div
-                    // console.log(this);
-                    this.bool=!this.bool;//取上次的反值
-                    e.currentTarget.style.backgroundColor=this.bool ? "blue" : "red";
-                }
-            }
+            // class Box{
+            //     bool=false;
+            //     constructor(){
+            //         this.elem=this.createElem();
+            //     }
+            //     createElem(){
+            //         let div=document.createElement("div");
+            //         // Object.assign(div.style,{
+            //         //     width:"50px",
+            //         //     height:"50px",
+            //         //     backgroundColor:"red"
+            //         // })
+            //         // var obj={
+            //         //     width:"50px",
+            //         //     height:"50px",
+            //         //     backgroundColor:"red"
+            //         // }
+            //         // for(var prop in obj){
+            //         //     div.style[prop]=obj[prop];
+            //         // }
+            //         div.style.width="50px";
+            //         div.style.height="50px";
+            //         div.style.backgroundColor="red";
+            //         div.addEventListener("click",e=>{
+            //             this.clickHandler(e);
+            //         });
+            //         return div;
+            //     }
+            //     appendTo(parent){
+            //         parent.appendChild(this.elem);
+            //     }
+            //     clickHandler(e){
+            //         // this  //this-->div
+            //         // console.log(this);
+            //         this.bool=!this.bool;//取上次的反值
+            //         e.currentTarget.style.backgroundColor=this.bool ? "blue" : "red";
+            //     }
+            // }
 
-            for(var i=0;i<10;i++){
-                var b=new Box();
-            b.appendTo(document.body);
-            }
+            // for(var i=0;i<10;i++){
+            //     var b=new Box();
+            // b.appendTo(document.body);
+            // }
     </script>
 </body>
 
