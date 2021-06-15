@@ -6,16 +6,16 @@ const people = [
   { name: "yi", age: 20 },
 ];
 
-// function groupBy(arr, property) {
-//   return arr.reduce((data, item) => {
-//     const key = item[property];
-//     if (!data[key]) {
-//       data[key] = [];
-//     }
-//     data[key].push(item);
-//     return data;
-//   }, {});
-// }
+function groupBy(arr, property) {
+  return arr.reduce((data, item) => {
+    const key = item[property];
+    if (!data[key]) {
+      data[key] = [];
+    }
+    data[key].push(item);
+    return data;
+  }, {});
+}
 
 
 // 用forEach实现groupBy
