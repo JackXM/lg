@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ooops</title>
+</head>
+<body>
+  <div id="wrapper" class="wrapper">
+    <h1>snowpack</h1>
+    <div>
+      <span>主体</span>
+    </div>
+    <a>到底了</a>
+  </div>
+</body>
+<script>
+  const dom = document.getElementById('wrapper')
+  function dom2Json(rootDom) {
+    const obj = {}
+    obj.tag = rootDom.tagName;
+    obj.className = rootDom.className;
+    obj.children = handleChildren(rootDom)
+    return obj;
+  }
+
+  // 递归处理
+  function handleChildren(rootDom) {
+    const result = [];
+    const childs = rootDom.children;
+    if (!childs || childs.length === 0) {
+      return result;
+    }
+    for (const child of childs) {
+      const obj = {}
+      obj.tag = child.tagName;
+      obj.className = child.className;
+      obj.children = handleChildren(child);
+      result.push(obj);
+    }
+    return result;
+  }
+  console.log(dom2Json(dom));
+</script>
+</html>
