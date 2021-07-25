@@ -16,7 +16,7 @@ console.log(getAreaWithMemory(4)) */
 function memoize (fn) {
   let cache = {} // 参数作为key ， 结果作为value
   return function () {
-    let key = JSON.stringify(arguments) // 把为数组字符串作为参数
+    let key = JSON.stringify(arguments) // 把伪数组字符串作为参数
     cache[key] = cache[key] || fn.apply(fn, arguments)
     return cache[key]
   }

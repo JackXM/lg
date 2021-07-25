@@ -9,11 +9,3 @@
 // Object.is(+0, -0) // true
 // Object.is(NaN, NaN) // true
 // );
-
-let obj = {
-  name: 'xiao',
-  gender: 1,
-}
-console.log({
-  ...obj
-});

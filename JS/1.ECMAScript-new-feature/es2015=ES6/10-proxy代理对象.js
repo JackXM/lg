@@ -9,7 +9,7 @@ const {
 } = console
 const personProxy = new Proxy(person, {
   get(target, property) {
-    // console.log(target, property);
+    log(target, property);
     return property in target ? target[property] : 'default'
   },
   set(target, property, value) {
@@ -22,5 +22,5 @@ const personProxy = new Proxy(person, {
   }
 })
 // personProxy.gender = '1'
-// console.log(personProxy.name);
-personProxy.age = '2'
+console.log(personProxy.name);
+// personProxy.age = '2'

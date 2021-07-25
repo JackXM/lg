@@ -5,7 +5,7 @@ const obj = {
   bar, // 若值是变量 且和属性名相同 可省略
   // method: function () {
   //   console.log('method1');
-  // }
+  // },
   method() {
     console.log('1', this);
   },
